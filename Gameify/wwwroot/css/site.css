@@ -35,3 +35,15 @@ body {
         display: none;
     }
 }
+
+textarea {
+    resize: none;
+}
+
+.form-control {
+    max-width: 300px;
+}
+
+.table td, th {
+    text-align: center;   
+}

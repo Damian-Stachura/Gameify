@@ -1,0 +1,71 @@
+﻿@model Gameify.ViewModels.GameFormViewModel
+
+@{
+    ViewData["Title"] = "GameForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Title</h2>
+
+@using (@Html.BeginForm("Save", "Games"))
+{
+    <div class="form-group">
+        @Html.LabelFor(g => g.Name)
+        @Html.TextBoxFor(g => g.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(g => g.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(g => g.Producer)
+        @Html.TextBoxFor(g => g.Producer, "{0:dd/MM/yyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(g => g.Producer)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(g => g.ReleaseDate)
+        @Html.TextBoxFor(g => g.ReleaseDate, new { @class = "form-control" })
+        @Html.ValidationMessageFor(g => g.ReleaseDate)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(g => g.GenreId)
+        @Html.DropDownListFor(g => g.GenreId, new SelectList(Model.Genres, "Id", "Name"), "Select Game Genre", new { @class = "form-control" })
+        @Html.ValidationMessageFor(g => g.GenreId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(g => g.PegiAgeId)
+        @Html.DropDownListFor(g => g.PegiAgeId, new SelectList(Model.PegiAges, "Id", "Age"), "Select Pegi Age Category", new { @class = "form-control" })
+        @Html.ValidationMessageFor(g => g.PegiAgeId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(g => g.PegiContentId)
+        @Html.DropDownListFor(g => g.PegiContentId, new SelectList(Model.PegiContents, "Id", "Name"), "Select Pegi Content Flag", new { @class = "form-control" })
+        @Html.ValidationMessageFor(g => g.PegiContentId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(g => g.AvailableOnPlatforms)
+        @Html.TextBoxFor(g => g.AvailableOnPlatforms, new { @class = "form-control" })
+        @Html.ValidationMessageFor(g => g.AvailableOnPlatforms)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(g => g.Description)
+        @Html.TextAreaFor(g => g.Description, 4, 4, new { @class = "form-control" })
+        @Html.ValidationMessageFor(g => g.Description)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(g => g.Cost)
+        @Html.TextBoxFor(g => g.Cost, new { @class = "form-control" })
+        @Html.ValidationMessageFor(g => g.Cost)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(g => g.NumberAvailable)
+        @Html.TextBoxFor(g => g.NumberAvailable, new { @class = "form-control" })
+        @Html.ValidationMessageFor(g => g.NumberAvailable)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(g => g.Rating)
+        @Html.TextBoxFor(g => g.Rating, new { @class = "form-control" })
+        @Html.ValidationMessageFor(g => g.Rating)
+    </div>
+
+    @Html.ActionLink("Cancel", "Index", "Games", null, new { @class = "btn btn-danger" })
+    <button type="submit" class="btn btn-success">Save</button>
+}
+
